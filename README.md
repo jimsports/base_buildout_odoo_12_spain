@@ -37,7 +37,7 @@ $ sudo apt-get install openerp-server-system-build-deps
 $ sudo apt-get install libreadline-dev
 ```
 
-5. Crear un **virtualenv** dentro de la carpeta del respositorio.
+5. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
 Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
