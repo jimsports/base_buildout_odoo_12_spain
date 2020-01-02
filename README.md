@@ -25,31 +25,39 @@ $ sudo apt-key add key.txt
 ```
 $ sudo apt-get install python3-dev
 ```
-- Actualizar e instalar
+4. Actualizar e instalar
 ```
 $ sudo apt-get update
 $ sudo apt-get install openerp-server-system-build-deps
 ```
+
 - Para poder compilar e instalar postgres
+
 ```
 $ sudo apt-get install libreadline-dev
 ```
-- Crear un virtualenv dentro de la carpeta del respositorio. Esto podría ser opcional, obligatorio para desarrollo o servidor de pruebas, tal vez podríamos no hacerlo para un despliegue en producción. Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
+
+5. Crear un **virtualenv** dentro de la carpeta del respositorio.
+Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
 $ virtualenv -p python3.5 sandbox
 ```
-- Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
+
+6. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
+
 ```
 $ sandbox/bin/python3.5 bootstrap.py -c [archivo_buildout]
 $ sandbox/bin/python3 bootstrap.py --setuptools-version=40.8.0 -c devel-buildout.cfg
 ```
-- Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
+
+7. Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
+
 ```
 $ bin/buildout -c [archivo_buildout]
 ```
 
-- Si falla al instalar xmlsec ....
+8. Si falla al instalar xmlsec ....
 ```
 $ apt-get install libxml2-dev libxmlsec1-dev libxmlsec1-openssl
 ```
@@ -65,6 +73,7 @@ $ bin/start_odoo
 $ bin/supervisord
 $ bin/buildout -c [archivo_buildout]
 ```
+
 - Conectarse al supervisor con localhost:9002
 - Si fuera necesario hacer update all, se puede parar desde el supervisor y en la consola hacer:
 ```
@@ -82,7 +91,7 @@ $ sudo apt-get install iptables-persistent (marcamos "yes" en las preguntas que 
 ```
 
 ## Configurar Odoo
-Archivo de configuración: etc/odoo.cfg, si sequieren cambiar opciones en  odoo.cfg, no se debe editar el fichero,
+Archivo de configuración: etc/odoo.cfg, si se quieren cambiar opciones en  odoo.cfg, no se debe editar el fichero,
 si no añadirlas a la sección [odoo] del buildout.cfg
 y establecer esas opciones .'add_option' = value, donde 'add_option'  y ejecutar buildout otra vez.
 
@@ -103,8 +112,6 @@ odoo_xmlrpcs_port = 9071 (8071 default odoo)
 supervisor_port = 9002      (9001 default supervisord)
 postgres_port = 5434        (5432 default postgres)
 ```
-
-# Contributors
 
 ## Creators
 
