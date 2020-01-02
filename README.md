@@ -148,6 +148,39 @@ supervisor_port = 9002      (9001 default supervisord)
 postgres_port = 5434        (5432 default postgres)
 ```
 
-## Creators
+# Instalar wkhtmltopdf
+Sólo versiones específicas funcionan bien en Odoo. Desde odoo 10 la que se recomienda es la versión 0.12.5
+Por si hay alguna versión ya instalada, comprobar:
+```
+$ wkhtmltopdf --version
+```
 
-Rastislav Kober, http://www.kybi.sk
+Si muestra una diferente de la 0.12.5, deberíamos desinstalarla:
+```
+$ sudo apt-get remove --purge wkhtmltopdf
+```
+
+Ahora vamos a descargar e instalar el paquete apropiado (Ubuntu 18 es bionic):
+https://github.com/wkhtmltopdf/wkhtmltopdf/releases
+```
+$ wget "https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.5/wkhtmltox_0.12.5-1.bionic_amd64.deb" -O wkhtml.deb
+$ sudo dpkg -i wkhtml.deb
+```
+
+El último comando probablemente dé un error por falta de dependencias:
+```
+$ sudo apt-get -f install 
+```
+
+Comprobación:
+```
+$ wkhtmltopdf --version
+wkhtmltopdf 0.12.5 (with patched qt)
+```
+
+
+
+
+
+
+
