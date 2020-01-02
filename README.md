@@ -40,11 +40,8 @@ $ sudo apt-get update
 $ sudo apt-get install openerp-server-system-build-deps
 ```
 
-- Para poder compilar e instalar postgres
-
-```
+~~-~~ ~~Para poder compilar e instalar postgres
 $ sudo apt-get install libreadline-dev
-```
 
 6. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
 Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
