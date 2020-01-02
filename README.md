@@ -72,9 +72,9 @@ $ sudo apt-get install openerp-server-system-build-deps
 6. <del>- Para poder compilar e instalar postgres</del>
 <del>sudo apt-get install libreadline-dev</del>
 
-7. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
+7. Crear un **virtualenv** dentro de la carpeta del repositorio (que llamaremos **sandbox**).
 Si no está instalado, instalar el paquete de virtualenv. 
-Es necesario tener la versión que se instala con `easy_install` o con `pip`, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
+Es necesario tener la versión que se instala con `easy_install` o con `pip`, desinstalar el paquete `python-virtualenv` si fuera necesario e instalarlo con `easy_install`
 ```
 $ sudo easy_install virtualenv
 $ virtualenv -p python3.6 sandbox
@@ -115,7 +115,7 @@ $ bin/buildout -c [archivo_buildout]
 $ cd bin
 $ ./upgrade_odoo
 ```
-- odoo se lanza en el puerto 9069 (se pude configurar en otro)
+- odoo se lanza en el puerto 8069 (se puede configurar en otro)
 
 ## Securizar el acceso al supervisor
 ```
@@ -149,7 +149,7 @@ postgres_port = 5434        (5432 default postgres)
 ```
 
 # Instalar wkhtmltopdf
-Sólo versiones específicas funcionan bien en Odoo. Desde odoo 10 la que se recomienda es la versión 0.12.5
+Sólo versiones específicas funcionan bien en Odoo. Desde odoo 10 la que se recomienda oficialmente es la versión 0.12.5
 Por si hay alguna versión ya instalada, comprobar:
 ```
 $ wkhtmltopdf --version
