@@ -178,9 +178,6 @@ $ wkhtmltopdf --version
 wkhtmltopdf 0.12.5 (with patched qt)
 ```
 
-
-
-
-
-
+# Para poder acceder con pgAdmin
+Tenemos que editar los archivos de PostgreSQL `pg_hba.conf` y `postgresql.conf`.
 
