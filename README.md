@@ -2,32 +2,26 @@
 
 ## Instrucciones
 1. Instalar PostgreSQL 10. No probado con Postgre 11. 
-Como se han eliminado en el buildout las referencias a PostgreSQL, eso se debe instalar primero, de forma independiente a buildout. 
+Como se han eliminado en el buildout las referencias a PostgreSQL, se debe instalar primero, de forma independiente a buildout. 
 **No es necesario crear la Base de Datos de Odoo**: ya se encargará Odoo de crearla la primera vez que lo iniciemos (con el nombre que indiquemos en devel-odoo.cfg)  
 
 2. Instalar las dependencias de Anybox
-- Añadir el repositorio a `/etc/apt/sources.list`:
+* Añadir el repositorio a `/etc/apt/sources.list`:
 ```
 $ sudo nano /etc/apt/sources.list
 deb http://apt.anybox.fr/openerp common main
 $ sudo apt update
 ```
-- Si se quiere añadir la firma. Esta a veces tarda mucho tiempo o incluso da time out. Es opcional meterlo
+* Añadir la firma:
 ```
-$ sudo apt-key adv --keyserver hkp://subkeys.pgp.net --recv-keys 0xE38CEB07
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 0xE38CEB07
+```
+* Si no funciona lo anterior: clicar en el enlace pub y copiar a un archivo de texto.
+```
+$ sudo apt-key add key.txt
 ```
 
-Si no funciona:
-Instalar la key de anybox.
-Añadir el repo a /etc/apt/sources.list:
-sudo nano /etc/apt/sources.list
-Añadir al final deb http://apt.anybox.fr/openerp common main
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 0xE38CEB07
-
-Si no funciona, clicar en el enlace pub y copiar a un archivo de texto.
-sudo apt-key add key.txt
-
-- Instalar dependencias python3
+3. Instalar dependencias python3
 ```
 $ sudo apt-get install python3-dev
 ```
