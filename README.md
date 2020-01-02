@@ -3,9 +3,11 @@
 ## Instrucciones
 1. Instalar PostgreSQL 10. No probado con Postgre 11. 
 Como se han eliminado en el buildout las referencias a PostgreSQL, se debe instalar primero, de forma independiente a buildout. 
-**No es necesario crear la Base de Datos de Odoo**: ya se encargará Odoo de crearla la primera vez que lo iniciemos (con el nombre que indiquemos en devel-odoo.cfg)  
+**No es necesario crear la Base de Datos de Odoo**: ya se encargará Odoo de crearla la primera vez que lo iniciemos (con el nombre que indiquemos en devel-odoo.cfg)
 
-2. Instalar las dependencias de Anybox
+2. Crear carpeta para Odoo en /opt/odoo/[nombre de nuestra web]
+
+3. Instalar las dependencias de Anybox
 * Añadir el repositorio a `/etc/apt/sources.list`:
 ```
 $ sudo nano /etc/apt/sources.list
@@ -21,11 +23,12 @@ $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 0xE38CEB07
 $ sudo apt-key add key.txt
 ```
 
-3. Instalar dependencias python3
+4. Instalar dependencias python3
 ```
 $ sudo apt-get install python3-dev
 ```
-4. Actualizar e instalar
+
+5. Actualizar e instalar
 ```
 $ sudo apt-get update
 $ sudo apt-get install openerp-server-system-build-deps
@@ -37,27 +40,27 @@ $ sudo apt-get install openerp-server-system-build-deps
 $ sudo apt-get install libreadline-dev
 ```
 
-5. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
+6. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
 Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
 $ virtualenv -p python3.5 sandbox
 ```
 
-6. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
+7. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
 
 ```
 $ sandbox/bin/python3.5 bootstrap.py -c [archivo_buildout]
 $ sandbox/bin/python3 bootstrap.py --setuptools-version=40.8.0 -c devel-buildout.cfg
 ```
 
-7. Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
+8. Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
 
 ```
 $ bin/buildout -c [archivo_buildout]
 ```
 
-8. Si falla al instalar xmlsec ....
+9. Si falla al instalar xmlsec ....
 ```
 $ apt-get install libxml2-dev libxmlsec1-dev libxmlsec1-openssl
 ```
