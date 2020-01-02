@@ -31,6 +31,8 @@ postgres@ubuntuo$ psql
   postgres=# ALTER USER odoo WITH PASSWORD 'odoo';
   \q
 ```
+Esta contraseña tiene que ser la misma que aparezca en el archivo `devel-odoo.cfg`.
+
 
 2. Crear carpeta para Odoo en `/opt/odoo/[nombre_de_nuestra_web]`. Cambiar propietario carpetas a nuestro usuario (en caso de instancia Ubuntu de Amazon, el usuario por defecto se llama ubuntu):
 ```
