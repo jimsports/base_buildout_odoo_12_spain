@@ -5,7 +5,13 @@
 Como se han eliminado en el buildout las referencias a PostgreSQL, se debe instalar primero, de forma independiente a buildout. 
 **No es necesario crear la Base de Datos de Odoo**: ya se encargará Odoo de crearla la primera vez que lo iniciemos (con el nombre que indiquemos en devel-odoo.cfg)
 
-2. Crear carpeta para Odoo en /opt/odoo/[nombre de nuestra web]
+2. Crear carpeta para Odoo en /opt/odoo/[nombre_de_nuestra_web]. Cambiar propietario carpetas a nuestro usuario (en caso de instancia Ubuntu de Amazon, el usuario por defecto se llama ubuntu):
+```
+$ cd /opt/
+$ sudo mkdir odoo
+$ sudo chown ubuntu odoo
+
+```
 
 3. Instalar las dependencias de Anybox
 * Añadir el repositorio a `/etc/apt/sources.list`:
