@@ -1,11 +1,38 @@
 # Buildout base para Odoo 12
 
 ## Instrucciones
-1. Instalar PostgreSQL 10. No probado con Postgre 11. 
-Como se han eliminado en el buildout las referencias a PostgreSQL, se debe instalar primero, de forma independiente a buildout. 
-**No es necesario crear la Base de Datos de Odoo**: ya se encargará Odoo de crearla la primera vez que lo iniciemos (con el nombre que indiquemos en devel-odoo.cfg)
+0. Seguramente haya que instalar paquetes de idioma español; por ejemplo si usamos una instancia Ubuntu de Amazon, vendrá en inglés.
+```
+$ sudo apt-get install language-pack-es
+$ sudo apt-get install language-pack-es-base
+$ sudo apt install aspell-es
+$ sudo apt install myspell-es
+$ sudo apt-get install manpages-es
+```
 
-2. Crear carpeta para Odoo en /opt/odoo/[nombre_de_nuestra_web]. Cambiar propietario carpetas a nuestro usuario (en caso de instancia Ubuntu de Amazon, el usuario por defecto se llama ubuntu):
+1. Instalar PostgreSQL 10. No probado con Postgre 11. 
+Como se han eliminado del buildout las referencias a PostgreSQL, se debe instalar primero, de forma independiente a buildout. 
+**No es necesario crear la Base de Datos de Odoo**: ya se encargará Odoo de crearla la primera vez que lo iniciemos (con el nombre que indiquemos en `devel-odoo.cfg`)
+```
+$ sudo apt-get install postgresql postgresql-contrib
+```
+Podemos crear ahora el usuario de Odoo para la Base de Datos
+```
+$ sudo su - postgres -c "createuser -s odoo"
+```
+O bien 
+```
+$ createuser -s -P odoo
+```
+También podemos cambiar después la contraseña entrando en psql:
+```
+$ sudo su postgres
+postgres@ubuntuo$ psql
+  postgres=# ALTER USER odoo WITH PASSWORD 'odoo';
+  \q
+```
+
+2. Crear carpeta para Odoo en `/opt/odoo/[nombre_de_nuestra_web]`. Cambiar propietario carpetas a nuestro usuario (en caso de instancia Ubuntu de Amazon, el usuario por defecto se llama ubuntu):
 ```
 $ cd /opt/
 $ sudo mkdir odoo
@@ -24,7 +51,7 @@ $ sudo apt update
 ```
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com --recv-keys 0xE38CEB07
 ```
-* Si no funciona lo anterior: clicar en el enlace pub y copiar a un archivo de texto.
+* Si no funciona lo anterior: ir al enlace anterior, clicar en el enlace pub, y copiar a un archivo de texto.
 ```
 $ sudo apt-key add key.txt
 ```
@@ -39,20 +66,21 @@ $ sudo apt-get install python3-dev
 $ sudo apt-get update
 $ sudo apt-get install openerp-server-system-build-deps
 ```
+
 6. <del>- Para poder compilar e instalar postgres</del>
 <del>sudo apt-get install libreadline-dev</del>
 
 7. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
-Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
+Si no está instalado, instalar el paquete de virtualenv. 
+Es necesario tener la versión que se instala con `easy_install` o con `pip`, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
-$ virtualenv -p python3.5 sandbox
+$ virtualenv -p python3.6 sandbox
 ```
 
-8. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
-
+8. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual.
 ```
-$ sandbox/bin/python3.5 bootstrap.py -c [archivo_buildout]
+$ sandbox/bin/python3.6 bootstrap.py -c [archivo_buildout]
 $ sandbox/bin/python3 bootstrap.py --setuptools-version=40.8.0 -c devel-buildout.cfg
 ```
 
