@@ -39,32 +39,30 @@ $ sudo apt-get install python3-dev
 $ sudo apt-get update
 $ sudo apt-get install openerp-server-system-build-deps
 ```
+6. <del>- Para poder compilar e instalar postgres</del>
+<del>sudo apt-get install libreadline-dev</del>
 
-<del>Para poder compilar e instalar postgres</del>
-
-<s>$ sudo apt-get install libreadline-dev</s>
-
-6. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
+7. Crear un **virtualenv** dentro de la carpeta del respositorio (que llamaremos sandbox).
 Si no está instalado, instalar el paquete de virtualenv. Es necesario tener la versión que se instala con easy_install o con pip, desinstalar el paquete python-virtualenv si fuera necesario e instalarlo con easy_install
 ```
 $ sudo easy_install virtualenv
 $ virtualenv -p python3.5 sandbox
 ```
 
-7. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
+8. Ahora procedemos a ejecutar el buildout en nuestro entorno virtual
 
 ```
 $ sandbox/bin/python3.5 bootstrap.py -c [archivo_buildout]
 $ sandbox/bin/python3 bootstrap.py --setuptools-version=40.8.0 -c devel-buildout.cfg
 ```
 
-8. Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
+9. Lanzar buildout (el -c [archivo_buildout] se usa cuando no tiene el nombre por defecto buildout.cfg)
 
 ```
 $ bin/buildout -c [archivo_buildout]
 ```
 
-9. Si falla al instalar xmlsec ....
+10. Si falla al instalar xmlsec ....
 ```
 $ apt-get install libxml2-dev libxmlsec1-dev libxmlsec1-openssl
 ```
